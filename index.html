@@ -92,12 +92,72 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="card m-2 my-5">
-      <div class="card-body">
+    </div><br>
+
+    <div class="container bootstrap snippets bootdeys mx-auto hidden" id="addForm">
+              <form class="form-horizontal">
+                  <div class="card">
+                      <div class="card-header">
+                          <h4 class="card-title">Add Medicine Information</h4>
+                      </div>
+                      <div class="card-body">
+                          <div class="mb-3 row">
+                              <label for="medicine" class="col-sm-2 col-form-label">Name</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="medicine">
+                              </div>
+                          </div>
+                          <div class="mb-3 row">
+                            <label for="description" class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="description">
+                            </div>
+                        </div>
+
+                          <div class="mb-3 row">
+                            <label for="Remarks" class="col-sm-2 col-form-label">Remarks</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Remarks">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                          <label for="duration" class="col-sm-2 col-form-label">Duration</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" id="duration">
+                          </div>
+                      </div>
+
+                      <div class="mb-3 row">
+                        <label for="schedule-day" class="col-sm-2 col-form-label">Schedule</label>
+                        
+                        <div class="col-sm-10 mt-2">
+                            <input class="form-check-input" type="checkbox" id="schedule-day" name="schedule[]" value="Day">
+                            <label class="form-check-label mx-2" for="schedule-day">Day</label>
+
+                            <input class="form-check-input" type="checkbox" id="schedule-noon" name="schedule[]" value="Noon">
+                            <label class=" mx-2 form-check-label" for="schedule-noon">Noon</label>
+
+                            <input class="form-check-input" type="checkbox" id="schedule-night" name="schedule[]" value="Night">
+                            <label class=" mx-2 form-check-label" for="schedule-night">Night</label>
+                            <div class="text-center mt-3">
+                              <button type="submit" class="btn btn-secondary ">Close</button>
+                              <button onclick="closeForm()" type="submit" class="btn btn-primary ">Update</button>
+                              
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+  </div>
+  
+
+    <div class="card m-4 my-5">
+      <div class="my-4">
         <div class="container">
           <div class="row align-items-center">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="mb-3">
                 <h5 class="card-title">
                   Medicine List
@@ -148,7 +208,9 @@
                 </ul>
               </div>
                 <div>
-                  <a href="#" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-primary" ><i class="bx bx-plus me-1"></i> Add New</a>
+                  <button onclick="showForm()" style="border: none; background-color: white;">
+                    <a href="#" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-primary" ><i class="bx bx-plus me-1"></i> Add New</a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -275,34 +337,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script>
-      function showTable(option) {
-        const tableRow = document.getElementById('table-row');
-        const tableCol = document.getElementById('table-col');
-        const activeRow = document.getElementById("nav-active-row")
-        const activeCol = document.getElementById("nav-active-col")
-    
-        if (option === 'col') {
-          tableRow.classList.remove('hidden');
-          tableCol.classList.add('hidden');
-          activeRow.classList.add('active')
-          activeCol.classList.remove('active')
-          
-        } else if (option === 'row') {
-          tableRow.classList.add('hidden');
-          tableCol.classList.remove('hidden');
-          activeRow.classList.remove('active')
-          activeCol.classList.add('active')
-        }
-      }
-      const fileInput = document.getElementById("fileInput");
-      const openCameraBtn = document.getElementById("openCameraBtn");
-
-      openCameraBtn.addEventListener("click", function () {
-        fileInput.capture = "user";
-        fileInput.accept = "image/*";
-        fileInput.click();
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
