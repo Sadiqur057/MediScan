@@ -75,3 +75,7 @@
     .hidden {
         display: none;
       }
+
+      .box-point{
+        border: 2px solid red !important;
+      }
