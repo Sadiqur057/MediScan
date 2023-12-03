@@ -124,3 +124,15 @@ img {
     display: block;
     width: 80%;
 }
+
+@media screen and (max-width: 600px) {
+    .img-container {
+        margin-left: -10px;
+    }
+
+}
+@media screen and (max-width: 450px) {
+    .img-container {
+        margin-left: -28px;
+    }
+}
