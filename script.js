@@ -1,6 +1,8 @@
 onLoad();
 function onLoad() {
   showTable("col");
+  const form = document.getElementById("addForm");
+  form.classList.add("hidden");
 }
 
 function showTable(option) {
@@ -144,6 +146,20 @@ function saveData() {
   };
   localStorage.setItem(medicineKey, JSON.stringify(medicineData));
   onLoad();
+  resetInputBox();
+}
+function resetInputBox(){
+    // Clear form inputs after successful save
+    document.getElementById("medicine").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("remarks").value = "";
+    document.getElementById("duration").value = "";
+  
+    // Uncheck all schedule checkboxes
+    scheduleCheckboxes = document.getElementsByName("schedule[]");
+    scheduleCheckboxes.forEach(function (checkbox) {
+      checkbox.checked = false;
+    });
 }
 
 function deleteData(key) {
