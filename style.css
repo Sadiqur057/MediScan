@@ -79,3 +79,7 @@
       .box-point{
         border: 2px solid red !important;
       }
+
+li a{
+    cursor: pointer;
+}
