@@ -117,10 +117,10 @@ li a{
     margin-top: 10px;
 }
 
-.cropped-container .img {
+.cropped-container img {
     margin: 0 auto;
     display: block;
-    width: 95%;
+    width: 100%;
 }
 
 @media screen and (max-width: 600px) {
