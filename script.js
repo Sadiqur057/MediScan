@@ -153,31 +153,36 @@ function deleteData(key) {
 
 const imageContainer = document.querySelector("main-container");
 const image = document.getElementById('image');
-
+let cropper;
 
 document.getElementById('fileInput').addEventListener('change', function (event) {
   var fileInput = event.target;
   var file = fileInput.files[0];
 
   if (file) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-          var imageElement = document.getElementById('image');
-          imageElement.classList.remove('hidden')
-          imageElement.src = e.target.result;
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var imageElement = document.getElementById('image');
+      imageElement.classList.remove('hidden');
+      imageElement.src = e.target.result;
 
-          // Initialize Cropper.js if needed
-          const cropper = new Cropper(image, {
-            aspectRatio: 0,
-        });
-        document.querySelector('#btn-crop').addEventListener('click', function() {
-          var croppedImage = cropper.getCroppedCanvas().toDataURL("image/png");
-          document.getElementById('output').src = croppedImage;
-          document.querySelector(".cropped-container").style.display = 'flex';
+      // Destroy the previous Cropper instance if it exists
+      if (cropper) {
+        cropper.destroy();
+      }
+
+      // Initialize the new Cropper instance
+      cropper = new Cropper(image, {
+        aspectRatio: 0,
       });
-        
-      };
-      reader.readAsDataURL(file);
+
+      document.querySelector('#btn-crop').addEventListener('click', function() {
+        var croppedImage = cropper.getCroppedCanvas().toDataURL("image/png");
+        document.getElementById('output').src = croppedImage;
+        document.querySelector(".cropped-container").style.display = 'flex';
+      });
+    };
+    reader.readAsDataURL(file);
   }
 });
 
