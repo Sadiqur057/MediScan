@@ -1,22 +1,9 @@
-function showTable(option) {
-    const tableRow = document.getElementById('table-row');
-    const tableCol = document.getElementById('table-col');
-    const activeRow = document.getElementById("nav-active-row")
-    const activeCol = document.getElementById("nav-active-col")
+onLoad();
+function onLoad() {
+  showTable('col');
+}
 
-    if (option === 'col') {
-      tableRow.classList.remove('hidden');
-      tableCol.classList.add('hidden');
-      activeRow.classList.add('active')
-      activeCol.classList.remove('active')
-      
-    } else if (option === 'row') {
-      tableRow.classList.add('hidden');
-      tableCol.classList.remove('hidden');
-      activeRow.classList.remove('active')
-      activeCol.classList.add('active')
-    }
-  }
+
   const fileInput = document.getElementById("fileInput");
   const openCameraBtn = document.getElementById("openCameraBtn");
 
@@ -34,4 +21,27 @@ function closeForm() {
     const form = document.getElementById('addForm');
       form.classList.add('hidden');
   }
+function saveData() {
+    // Retrieve input values
+    let medicineKey = document.getElementById('medicine').value;
+    let description = document.getElementById('description').value;
+    let remarks = document.getElementById('remarks').value;
+    let duration = document.getElementById('duration').value;
 
+    // Retrieve selected schedule checkboxes
+    let scheduleCheckboxes = document.getElementsByName('schedule[]');
+    let selectedSchedule = [];
+    scheduleCheckboxes.forEach(function (checkbox) {
+        if (checkbox.checked) {
+            selectedSchedule.push(checkbox.value);
+        }
+    });
+    let medicineData = {
+        'description': description,
+        'remarks': remarks,
+        'duration': duration,
+        'schedule': selectedSchedule,
+    };
+    localStorage.setItem(medicineKey, JSON.stringify(medicineData));
+    onLoad();
+}
