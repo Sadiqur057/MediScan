@@ -3,6 +3,7 @@ function onLoad() {
   showTable("col");
   const form = document.getElementById("addForm");
   form.classList.add("hidden");
+  medicineCount();
 }
 
 function showTable(option) {
@@ -147,6 +148,10 @@ function saveData() {
   localStorage.setItem(medicineKey, JSON.stringify(medicineData));
   onLoad();
   resetInputBox();
+}
+function medicineCount(){
+    let countElement = document.getElementById('medicine-count');
+    countElement.innerText = localStorage.length;
 }
 function resetInputBox(){
     // Clear form inputs after successful save
