@@ -162,8 +162,10 @@ document.getElementById('fileInput').addEventListener('change', function (event)
   if (file) {
     var reader = new FileReader();
     reader.onload = function (e) {
-      var imageElement = document.getElementById('image');
+      const imageElement = document.getElementById('image');
+      const cropBtn = document.getElementById('btn-crop');
       imageElement.classList.remove('hidden');
+      cropBtn.classList.remove('hidden');
       imageElement.src = e.target.result;
 
       // Destroy the previous Cropper instance if it exists
@@ -177,6 +179,7 @@ document.getElementById('fileInput').addEventListener('change', function (event)
       });
 
       document.querySelector('#btn-crop').addEventListener('click', function() {
+        const uploadBtn = document.getElementById('submit-btn-container').classList.remove('hidden');
         var croppedImage = cropper.getCroppedCanvas().toDataURL("image/png");
         document.getElementById('output').src = croppedImage;
         document.querySelector(".cropped-container").style.display = 'flex';
