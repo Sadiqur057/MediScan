@@ -97,7 +97,7 @@ img {
     max-width: 100%;
 }
 .main-container {
-    width: 35vw;
+    width: 100%;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -106,7 +106,7 @@ img {
 .img-container {
     margin: 0 auto 10px;
     display: block;
-    width: 80%;
+    width: 100%;
 }
 .cropped-container {
     width: 100%;
@@ -114,7 +114,6 @@ img {
     text-align: center;
     justify-content: center;
     background-color: ghostwhite;
-    padding: 20px 20px;
     display: none;
     margin-top: 10px;
 }
@@ -122,17 +121,39 @@ img {
 #output {
     margin: 0 auto;
     display: block;
-    width: 80%;
+    width: 100%;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
     .img-container {
-        margin-left: -10px;
+        /* margin-left: -90px; */
+        width: 350px;
+    }
+    .img-container img{
+        width: 100%;
+    }
+    .cropped-container{
+        width: 400px;
+        /* margin-left: -112px; */
+    }
+    .cropped-container img{
+        width: 400px;
     }
 
 }
 @media screen and (max-width: 450px) {
     .img-container {
-        margin-left: -28px;
+        /* margin-left: -107px; */
+        width: 280px;
+    }
+    .img-container img{
+        width: 100%;
+    }
+    .cropped-container{
+        width: 340px;
+        /* margin-left: -102px; */
+    }
+    .cropped-container img{
+        width: 100%;
     }
 }
