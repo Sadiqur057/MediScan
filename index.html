@@ -16,6 +16,9 @@
       integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc="
       crossorigin="anonymous"
     /> -->
+
+    <link  href="cropperjs/cropper.css" rel="stylesheet">
+    <script src="cropperjs/cropper.js"></script>
   <style></style>
 </head>
 
@@ -45,6 +48,22 @@
               </div>
             </form>
           </div>
+
+
+          <div class="main-container">
+            <div class="img-container">
+                <img id="image" src="family.jpeg">
+            </div>
+            <div class="text-center">
+              <button id="btn-crop" class="btn btn-success">Crop</button>
+            </div>
+            <div class="cropped-container">
+                <img src="" id="output">
+            </div>
+          </div><br>
+
+
+
           <div class="card-footer text-center">
             <p class="my-1">
               <b>Contact us:</b>

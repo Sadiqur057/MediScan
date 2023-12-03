@@ -150,3 +150,29 @@ function deleteData(key){
   localStorage.removeItem(key);
   onLoad();
 }
+
+
+
+
+const image = document.getElementById('image');
+const imageContainer = document.querySelector('main-container');
+
+image.addEventListener('load', function() {
+  console.log('Image loaded');
+ 
+  const cropper = new Cropper(image, {
+    aspectRatio: 0,
+});
+
+document.querySelector('#btn-crop').addEventListener('click', function() {
+    var croppedImage = cropper.getCroppedCanvas().toDataURL("image/png");
+    document.getElementById('output').src = croppedImage;
+    document.querySelector(".cropped-container").style.display = 'flex';
+});
+});
+image.addEventListener('error', function() {
+  image.addEventListener('error', function() {
+    console.log('Image failed to load');
+});
+});
+

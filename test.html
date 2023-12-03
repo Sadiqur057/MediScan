@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Form</title>
+</head>
+<body>
+
+    <form class="form-horizontal" id="medicineForm">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Add Medicine Information</h4>
+            </div>
+            <div class="card-body">
+                <!-- Form fields -->
+                <div class="mb-3 row">
+                    <label for="medicine" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="medicine">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="description" class="col-sm-2 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="description">
+                    </div>
+                </div>
+                <!-- Add other form fields here -->
+
+                <!-- Schedule checkboxes -->
+                <div class="mb-3 row">
+                    <label for="schedule-day" class="col-sm-2 col-form-label">Schedule</label>
+                    <div class="col-sm-10 mt-2">
+                        <input class="form-check-input" type="checkbox" id="schedule-day" name="schedule[]" value="Day">
+                        <label class="form-check-label mx-2" for="schedule-day">Day</label>
+
+                        <input class="form-check-input" type="checkbox" id="schedule-noon" name="schedule[]" value="Noon">
+                        <label class=" mx-2 form-check-label" for="schedule-noon">Noon</label>
+
+                        <input class="form-check-input" type="checkbox" id="schedule-night" name="schedule[]" value="Night">
+                        <label class=" mx-2 form-check-label" for="schedule-night">Night</label>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-secondary" onclick="closeForm()">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveData()">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function saveData() {
+            // Retrieve input values
+            var medicineKey = document.getElementById('medicine').value;
+            var description = document.getElementById('description').value;
+            var remarks = document.getElementById('remarks').value;
+            var duration = document.getElementById('duration').value;
+
+            // Retrieve selected schedule checkboxes
+            var scheduleCheckboxes = document.getElementsByName('schedule[]');
+            var selectedSchedule = [];
+            scheduleCheckboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                    selectedSchedule.push(checkbox.value);
+                }
+            });
+
+            // Create an object with the retrieved data
+            var medicineData = {
+                'description': description,
+                'remarks': remarks,
+                'duration': duration,
+                'schedule': selectedSchedule,
+            };
+
+            // Convert the object to a JSON string and save it to localStorage with medicine as the key
+            localStorage.setItem(medicineKey, JSON.stringify(medicineData));
+
+            // // Optionally, you can also display an alert or perform other actions
+            // alert('Data saved to localStorage. Medicine: ' + medicineKey);
+        }
+
+    </script>
+
+</body>
+</html>
