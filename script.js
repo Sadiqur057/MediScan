@@ -1,9 +1,9 @@
 onLoad();
 function onLoad() {
+  medicineCount();
   showTable("col");
   const form = document.getElementById("addForm");
   form.classList.add("hidden");
-  medicineCount();
 }
 
 function showTable(option) {
